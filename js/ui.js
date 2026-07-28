@@ -8,6 +8,18 @@ this.theme();
 
 },
 
+const fab=document.getElementById("fab");
+
+if(fab){
+
+fab.onclick=()=>{
+
+Router.open("chat");
+
+};
+
+}
+
 pageLoaded(page){
 
 console.log(page);
@@ -19,6 +31,38 @@ this.chat();
 }
 
 },
+
+document
+
+.querySelectorAll(".card[data-page]")
+
+.forEach(card=>{
+
+card.onclick=()=>{
+
+Router.open(card.dataset.page);
+
+
+
+};
+
+});
+
+document
+
+.querySelectorAll("[data-page]")
+
+.forEach(item=>{
+
+item.classList.remove("active");
+
+if(item.dataset.page===page){
+
+item.classList.add("active");
+
+}
+
+});
 
 sidebar(){
 

@@ -432,3 +432,49 @@ font-size:11px;
 display:none!important;
 
 }
+
+.hero{
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#2563eb,
+
+#06b6d4
+
+);
+
+padding:28px;
+
+border-radius:22px;
+
+color:white;
+
+margin-bottom:20px;
+
+box-shadow:
+
+0 15px 35px
+
+rgba(37,99,235,.35);
+
+}
+
+.hero h1{
+
+font-size:34px;
+
+margin-bottom:8px;
+
+}
+
+.hero p{
+
+opacity:.9;
+
+margin-bottom:18px;
+
+}

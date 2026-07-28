@@ -85,3 +85,77 @@ color:var(--text);
 font-size:15px;
 
 }
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:12px;
+
+margin:20px 0;
+
+}
+
+.stat{
+
+text-align:center;
+
+padding:18px;
+
+}
+
+.stat h3{
+
+font-size:13px;
+
+color:var(--text-secondary);
+
+margin-bottom:8px;
+
+}
+
+.stat h2{
+
+font-size:28px;
+
+}
+
+.section-title{
+
+margin:20px 0 14px;
+
+font-size:22px;
+
+font-weight:700;
+
+}
+
+.cards .card{
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.cards .card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.cards .card:active{
+
+transform:scale(.98);
+
+}
+
+.active{
+
+background:var(--primary);
+
+color:white;
+
+}
