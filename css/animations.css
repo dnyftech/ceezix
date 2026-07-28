@@ -1,6 +1,12 @@
+/* ==========================================
+   CEEZIX Animation System
+========================================== */
+
+/* Fade */
+
 .fade{
 
-animation:fade .3s ease;
+animation:fade .35s ease;
 
 }
 
@@ -10,78 +16,500 @@ from{
 
 opacity:0;
 
-transform:translateY(12px);
-
 }
 
 to{
 
 opacity:1;
 
-transform:none;
-
 }
 
 }
 
-.slide{
+/* Slide Up */
 
-animation:slide .3s ease;
+.slide-up{
+
+animation:slideUp .35s ease;
 
 }
 
-@keyframes slide{
+@keyframes slideUp{
 
 from{
 
-transform:translateX(-20px);
-
 opacity:0;
+
+transform:translateY(20px);
 
 }
 
 to{
 
-transform:none;
-
 opacity:1;
 
-}
+transform:none;
 
 }
 
-.toast{
+}
 
-position:fixed;
+/* Slide Left */
 
-left:50%;
+.slide-left{
 
-bottom:90px;
+animation:slideLeft .3s ease;
 
-transform:translateX(-50%);
+}
 
-background:#111827;
+@keyframes slideLeft{
 
-color:#fff;
-
-padding:12px 20px;
-
-border-radius:999px;
+from{
 
 opacity:0;
 
-pointer-events:none;
+transform:translateX(-25px);
 
-transition:.3s;
+}
 
-z-index:9999;
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+/* Slide Right */
+
+.slide-right{
+
+animation:slideRight .3s ease;
+
+}
+
+@keyframes slideRight{
+
+from{
+
+opacity:0;
+
+transform:translateX(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+/* Scale */
+
+.scale{
+
+animation:scaleIn .28s ease;
+
+}
+
+@keyframes scaleIn{
+
+from{
+
+opacity:0;
+
+transform:scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+/* Floating */
+
+.float{
+
+animation:float 3s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+}
+
+/* Pulse */
+
+.pulse{
+
+animation:pulse 1.8s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.05);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* Rotate */
+
+.rotate{
+
+animation:rotate 1s linear infinite;
+
+}
+
+@keyframes rotate{
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* Spinner */
+
+.spinner{
+
+width:24px;
+
+height:24px;
+
+border:3px solid rgba(255,255,255,.2);
+
+border-top-color:var(--primary);
+
+border-radius:50%;
+
+animation:rotate .8s linear infinite;
+
+}
+
+/* Skeleton */
+
+.skeleton{
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#1e293b,
+
+#334155,
+
+#1e293b
+
+);
+
+background-size:300%;
+
+animation:skeleton 1.4s linear infinite;
+
+}
+
+@keyframes skeleton{
+
+0%{
+
+background-position:100%;
+
+}
+
+100%{
+
+background-position:-100%;
+
+}
+
+}
+
+/* Ripple */
+
+.ripple{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.ripple::after{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+width:0;
+
+height:0;
+
+background:rgba(255,255,255,.25);
+
+border-radius:50%;
+
+transform:translate(-50%,-50%);
+
+transition:.45s;
+
+}
+
+.ripple:active::after{
+
+width:260px;
+
+height:260px;
+
+}
+
+/* Sidebar */
+
+.sidebar{
+
+transition:left .3s ease;
+
+}
+
+/* FAB */
+
+.fab{
+
+transition:
+
+transform .25s,
+
+box-shadow .25s;
+
+}
+
+.fab:hover{
+
+transform:translateY(-4px);
+
+}
+
+.fab:active{
+
+transform:scale(.95);
+
+}
+
+/* Cards */
+
+.card{
+
+transition:
+
+transform .25s,
+
+box-shadow .25s,
+
+border-color .25s;
+
+}
+
+.card:hover{
+
+transform:translateY(-5px);
+
+box-shadow:
+
+0 20px 40px rgba(0,0,0,.3);
+
+}
+
+/* Buttons */
+
+.btn{
+
+transition:
+
+transform .2s,
+
+opacity .2s,
+
+box-shadow .2s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+.btn:active{
+
+transform:scale(.98);
+
+}
+
+/* Toast */
+
+.toast{
+
+transform:
+
+translateX(-50%)
+
+translateY(20px);
 
 }
 
 .toast.show{
 
+transform:
+
+translateX(-50%)
+
+translateY(0);
+
+}
+
+/* Modal */
+
+.modal{
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.25s;
+
+}
+
+.modal.active{
+
 opacity:1;
 
-bottom:100px;
+visibility:visible;
+
+}
+
+.modal-content{
+
+transform:scale(.9);
+
+transition:.25s;
+
+}
+
+.modal.active .modal-content{
+
+transform:scale(1);
+
+}
+
+/* Typing */
+
+.typing{
+
+display:flex;
+
+gap:6px;
+
+align-items:center;
+
+}
+
+.typing span{
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+background:var(--primary);
+
+animation:typing .8s infinite;
+
+}
+
+.typing span:nth-child(2){
+
+animation-delay:.15s;
+
+}
+
+.typing span:nth-child(3){
+
+animation-delay:.3s;
+
+}
+
+@keyframes typing{
+
+0%,100%{
+
+transform:translateY(0);
+
+opacity:.4;
+
+}
+
+50%{
+
+transform:translateY(-6px);
+
+opacity:1;
+
+}
+
+}
+
+/* Page */
+
+.page{
+
+animation:fade .3s ease;
 
 }

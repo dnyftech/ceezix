@@ -1,49 +1,93 @@
-/*
-========================================
- Local Storage Manager
-========================================
-*/
+/* ==========================================
+   CEEZIX Storage Manager
+========================================== */
 
-const Storage = {
+const Storage={
 
-    set(key, value) {
+prefix:"ceezix.",
 
-        localStorage.setItem(
-            key,
-            JSON.stringify(value)
-        );
+set(key,value){
 
-    },
+try{
 
-    get(key, fallback = null) {
+localStorage.setItem(
 
-        const value = localStorage.getItem(key);
+this.prefix+key,
 
-        if (!value)
-            return fallback;
+JSON.stringify(value)
 
-        try {
+);
 
-            return JSON.parse(value);
+return true;
 
-        } catch {
+}catch(e){
 
-            return fallback;
+console.error(e);
 
-        }
+return false;
 
-    },
+}
 
-    remove(key) {
+},
 
-        localStorage.removeItem(key);
+get(key,fallback=null){
 
-    },
+try{
 
-    clear() {
+const value=localStorage.getItem(
 
-        localStorage.clear();
+this.prefix+key
 
-    }
+);
+
+return value
+
+?JSON.parse(value)
+
+:fallback;
+
+}catch{
+
+return fallback;
+
+}
+
+},
+
+remove(key){
+
+localStorage.removeItem(
+
+this.prefix+key
+
+);
+
+},
+
+clear(){
+
+Object.keys(localStorage)
+
+.forEach(key=>{
+
+if(key.startsWith(this.prefix))
+
+localStorage.removeItem(key);
+
+});
+
+},
+
+has(key){
+
+return localStorage.getItem(
+
+this.prefix+key
+
+)!==null;
+
+}
 
 };
+
+window.Storage=Storage;

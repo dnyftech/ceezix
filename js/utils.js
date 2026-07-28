@@ -1,111 +1,169 @@
-/*
-========================================
- CEEZIX Utility Library
-========================================
-*/
+/* ==========================================
+   CEEZIX Utility Library
+========================================== */
 
 const Utils = {
 
-    $(selector) {
+    version: "1.0.0",
+
+    $(selector){
+
         return document.querySelector(selector);
-    },
-
-    $$(selector) {
-        return document.querySelectorAll(selector);
-    },
-
-    create(tag, className = "") {
-
-        const element = document.createElement(tag);
-
-        if (className)
-            element.className = className;
-
-        return element;
-    },
-
-    on(element, event, callback) {
-
-        if (!element) return;
-
-        element.addEventListener(event, callback);
 
     },
 
-    show(element) {
+    $$(selector){
 
-        if (!element) return;
-
-        element.classList.remove("hidden");
+        return [...document.querySelectorAll(selector)];
 
     },
 
-    hide(element) {
+    create(tag,className=""){
 
-        if (!element) return;
+        const el=document.createElement(tag);
 
-        element.classList.add("hidden");
+        if(className){
 
-    },
-
-    toggle(element) {
-
-        if (!element) return;
-
-        element.classList.toggle("hidden");
-
-    },
-
-    toast(message, duration = 2500) {
-
-        let toast = document.getElementById("toast");
-
-        if (!toast) {
-
-            toast = document.createElement("div");
-
-            toast.id = "toast";
-
-            toast.className = "toast";
-
-            document.body.appendChild(toast);
+            el.className=className;
 
         }
 
-        toast.textContent = message;
-
-        toast.classList.add("show");
-
-        setTimeout(() => {
-
-            toast.classList.remove("show");
-
-        }, duration);
+        return el;
 
     },
 
-    uuid() {
+    id(){
 
         return crypto.randomUUID();
 
     },
 
-    time() {
+    random(min,max){
 
-        return new Date().toLocaleTimeString();
+        return Math.floor(
 
-    },
+            Math.random()*(max-min+1)
 
-    date() {
-
-        return new Date().toLocaleDateString();
+        )+min;
 
     },
 
-    copy(text) {
+    delay(ms){
 
-        navigator.clipboard.writeText(text);
+        return new Promise(resolve=>{
+
+            setTimeout(resolve,ms);
+
+        });
+
+    },
+
+    formatDate(date=new Date()){
+
+        return date.toLocaleDateString();
+
+    },
+
+    formatTime(date=new Date()){
+
+        return date.toLocaleTimeString([],{
+
+            hour:"2-digit",
+
+            minute:"2-digit"
+
+        });
+
+    },
+
+    capitalize(text){
+
+        if(!text) return "";
+
+        return text.charAt(0)
+
+            .toUpperCase()
+
+            +text.slice(1);
+
+    },
+
+    copy(text){
+
+        navigator.clipboard
+
+            .writeText(text)
+
+            .then(()=>{
+
+                Utils.toast("Copied");
+
+            });
+
+    },
+
+    toast(message,type="info"){
+
+        const toast=$("#toast");
+
+        if(!toast) return;
+
+        toast.innerText=message;
+
+        toast.className="toast show "+type;
+
+        clearTimeout(toast.timer);
+
+        toast.timer=setTimeout(()=>{
+
+            toast.className="toast";
+
+        },2500);
+
+    },
+
+    loading(show=true){
+
+        const loader=$("#loading");
+
+        if(!loader) return;
+
+        loader.style.display=
+
+            show?"flex":"none";
+
+    },
+
+    online(){
+
+        return navigator.onLine;
+
+    },
+
+    device(){
+
+        return{
+
+            mobile:/Android|iPhone|iPad/i
+
+                .test(navigator.userAgent),
+
+            touch:
+
+                navigator.maxTouchPoints>0,
+
+            width:window.innerWidth,
+
+            height:window.innerHeight
+
+        };
 
     }
 
 };
+
+const $=Utils.$;
+
+const $$=Utils.$$;
+
+window.Utils=Utils;

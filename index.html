@@ -1,94 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <title>CEEZIX</title>
+<meta charset="UTF-8">
 
-  <meta name="theme-color" content="#0f172a">
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-  <link rel="manifest" href="manifest.json">
+<meta
+name="theme-color"
+content="#2563eb">
 
-  <link rel="icon" href="assets/icons/favicon.png">
+<title>CEEZIX</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/mobile.css">
-  <link rel="stylesheet" href="css/themes.css">
-  <link rel="stylesheet" href="css/animations.css">
+<link rel="manifest" href="manifest.json">
+
+<link rel="icon" href="assets/icons/icon-192.png">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/animations.css">
+
 </head>
 
-<body>
+<body data-theme="dark">
 
 <div id="app">
 
 <header class="topbar">
 
-<button id="menuBtn" class="icon-btn">
+<button
+id="menuBtn"
+class="icon-btn">
+
 ☰
+
 </button>
 
-<h1 class="logo">
-CEEZIX
-</h1>
+<div class="brand">
+
+<img
+src="assets/icons/icon-192.png"
+alt="CEEZIX"
+class="logo">
+
+<div>
+
+<h1>CEEZIX</h1>
+
+<small>
+Mobile AI Workspace
+</small>
+
+</div>
+
+</div>
 
 <div class="top-actions">
 
-<button id="searchBtn" class="icon-btn">
+<button
+id="searchBtn"
+class="icon-btn">
+
 🔍
+
 </button>
 
-<button id="themeBtn" class="icon-btn">
+<button
+id="themeBtn"
+class="icon-btn">
+
 🌙
+
 </button>
 
 </div>
 
 </header>
 
-<aside id="sidebar" class="sidebar">
+<aside
+id="sidebar"
+class="sidebar">
 
 <div class="profile">
 
 <div class="avatar">
+
 C
+
 </div>
 
 <h2>CEEZIX</h2>
 
-<p>AI Workspace</p>
+<p>
+
+AI Workspace
+
+</p>
 
 </div>
 
 <nav>
 
-<a data-page="dashboard">
+<button
+class="nav-item active"
+data-page="dashboard">
+
 🏠 Dashboard
-</a>
 
-<a data-page="chat">
+</button>
+
+<button
+class="nav-item"
+data-page="chat">
+
 🤖 AI Chat
-</a>
 
-<a data-page="workspace">
+</button>
+
+<button
+class="nav-item"
+data-page="workspace">
+
 💻 Workspace
-</a>
 
-<a data-page="files">
+</button>
+
+<button
+class="nav-item"
+data-page="files">
+
 📁 Files
-</a>
 
-<a data-page="models">
+</button>
+
+<button
+class="nav-item"
+data-page="models">
+
 🧠 Models
-</a>
 
-<a data-page="settings">
+</button>
+
+<button
+class="nav-item"
+data-page="settings">
+
 ⚙ Settings
-</a>
+
+</button>
 
 </nav>
 
@@ -96,123 +161,90 @@ C
 
 <main id="content">
 
-<section class="hero">
+<div class="loading">
 
-<h2>
-Welcome to CEEZIX
-</h2>
+Loading...
 
-<p>
-Fast • Responsive • Static • Offline Ready
-</p>
-
-</section>
-
-<button class="btn btn-primary">Launch AI</button>
-
-<button class="btn btn-secondary">Workspace</button>
-
-<button class="btn btn-outline">Models</button>
-
-<button class="btn btn-glass">Explore</button>
-
-<button class="btn btn-success">Save</button>
-
-<button class="btn btn-warning">Update</button>
-
-<button class="btn btn-danger">Delete</button>
-
-<button class="btn btn-pill btn-primary">Get Started</button>
-
-<button class="btn btn-circle btn-primary">+</button>
-
-<button class="btn btn-block btn-primary">
-    Continue
-</button>
-
-<button class="fab">+</button>
-
-<section class="cards">
-
-<div class="card" id="dashboardCard">
-<h3>Dashboard</h3>
-<p>System overview and quick actions.</p>
 </div>
-
-<div class="card" id="chatCard">
-<h3>AI Chat</h3>
-<p>Interact with your assistant.</p>
-</div>
-
-<div class="card" id="workspaceCard">
-<h3>Workspace</h3>
-<p>Projects and development tools.</p>
-</div>
-
-<div class="card" id="filesCard">
-<h3>Files</h3>
-<p>Browse and manage local data.</p>
-</div>
-
-<div class="card" id="modelsCard">
-<h3>Models</h3>
-<p>Configure AI models.</p>
-</div>
-
-<div class="card" id="settingsCard">
-<h3>Settings</h3>
-<p>Customize the application.</p>
-</div>
-
-</section>
 
 </main>
 
 <nav class="bottom-nav">
 
-<button data-page="dashboard">
+<button
+class="active"
+data-page="dashboard">
+
 🏠
+
 <span>Home</span>
+
 </button>
 
-<button data-page="chat">
+<button
+data-page="chat">
+
 🤖
+
 <span>AI</span>
+
 </button>
 
-<button data-page="workspace">
+<button
+data-page="workspace">
+
 💻
+
 <span>Work</span>
+
 </button>
 
-<button data-page="files">
+<button
+data-page="files">
+
 📁
+
 <span>Files</span>
+
 </button>
 
-<button data-page="settings">
+<button
+data-page="settings">
+
 ⚙
+
 <span>More</span>
+
 </button>
 
 </nav>
 
-</div>
+<button
+id="fab"
+class="fab">
 
-<button class="fab"
-id="fab">
-
-+
+＋
 
 </button>
 
-<div id="toast" class="toast"></div>
+<div
+id="toast"
+class="toast">
 
+</div>
+
+</div>
+
+<script src="js/utils.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/api.js"></script>
 <script src="js/router.js"></script>
 <script src="js/ui.js"></script>
+<script src="js/search.js"></script>
+<script src="js/command.js"></script>
 <script src="js/app.js"></script>
 
 </body>
+
 </html>

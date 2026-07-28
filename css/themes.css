@@ -1,27 +1,173 @@
+/* ==========================================
+   CEEZIX Theme System
+========================================== */
+
+/* Default (Dark) */
+
 body[data-theme="dark"]{
 
 --background:#0b1220;
-
 --surface:#111827;
-
 --surface-light:#1f2937;
 
 --text:#ffffff;
-
 --text-secondary:#94a3b8;
+
+--primary:#2563eb;
+--primary-light:#3b82f6;
+
+--border:#273449;
+
+--success:#22c55e;
+--warning:#f59e0b;
+--danger:#ef4444;
 
 }
 
+/* Light */
+
 body[data-theme="light"]{
 
---background:#f6f7fb;
-
+--background:#f5f7fb;
 --surface:#ffffff;
-
 --surface-light:#eef2f7;
 
 --text:#111827;
-
 --text-secondary:#64748b;
+
+--primary:#2563eb;
+--primary-light:#3b82f6;
+
+--border:#d8dee9;
+
+--success:#16a34a;
+--warning:#d97706;
+--danger:#dc2626;
+
+}
+
+/* AMOLED */
+
+body[data-theme="amoled"]{
+
+--background:#000000;
+--surface:#090909;
+--surface-light:#141414;
+
+--text:#ffffff;
+--text-secondary:#8d8d8d;
+
+--primary:#3b82f6;
+--primary-light:#60a5fa;
+
+--border:#1b1b1b;
+
+}
+
+/* Emerald */
+
+body[data-theme="emerald"]{
+
+--background:#071a14;
+--surface:#0f2b22;
+--surface-light:#15382d;
+
+--text:#ffffff;
+--text-secondary:#b7d9cf;
+
+--primary:#10b981;
+--primary-light:#34d399;
+
+--border:#21493c;
+
+}
+
+/* Purple */
+
+body[data-theme="purple"]{
+
+--background:#18122b;
+--surface:#231942;
+--surface-light:#32245e;
+
+--text:#ffffff;
+--text-secondary:#c8c3df;
+
+--primary:#8b5cf6;
+--primary-light:#a78bfa;
+
+--border:#44356d;
+
+}
+
+/* Ocean */
+
+body[data-theme="ocean"]{
+
+--background:#06151f;
+--surface:#0b2331;
+--surface-light:#123547;
+
+--text:#ffffff;
+--text-secondary:#9cc3d5;
+
+--primary:#06b6d4;
+--primary-light:#22d3ee;
+
+--border:#20495e;
+
+}
+
+/* Apply Variables */
+
+body{
+
+background:var(--background);
+
+color:var(--text);
+
+transition:
+
+background .25s ease,
+color .25s ease;
+
+}
+
+.card,
+.sidebar,
+.topbar,
+.modal-content,
+.chat-window,
+input,
+textarea,
+select{
+
+background:var(--surface);
+
+color:var(--text);
+
+border-color:var(--border);
+
+transition:.25s;
+
+}
+
+.btn-primary{
+
+background:var(--primary);
+
+}
+
+a{
+
+color:var(--primary);
+
+}
+
+::selection{
+
+background:var(--primary);
+
+color:#fff;
 
 }

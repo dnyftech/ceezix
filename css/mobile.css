@@ -1,14 +1,76 @@
-@media(max-width:768px){
+/* ==========================================
+   CEEZIX Mobile Responsive
+========================================== */
 
-.sidebar{
+/* Phones */
 
-width:260px;
+@media (max-width:768px){
+
+main{
+
+margin-left:0;
+
+padding:16px;
+
+padding-top:84px;
+
+padding-bottom:90px;
 
 }
 
-.hero h2{
+.topbar{
 
-font-size:24px;
+padding:0 14px;
+
+height:60px;
+
+}
+
+.brand h1{
+
+font-size:16px;
+
+}
+
+.brand small{
+
+display:none;
+
+}
+
+.logo{
+
+width:36px;
+
+height:36px;
+
+}
+
+.hero{
+
+padding:22px;
+
+border-radius:18px;
+
+}
+
+.hero h1{
+
+font-size:28px;
+
+}
+
+.hero p{
+
+font-size:14px;
+
+}
+
+.cards{
+
+grid-template-columns:1fr;
+
+gap:14px;
 
 }
 
@@ -18,19 +80,217 @@ padding:16px;
 
 }
 
-.bottom-nav{
+.stats{
 
-display:flex;
+grid-template-columns:1fr;
+
+gap:14px;
+
+}
+
+.chat-window{
+
+height:52vh;
+
+}
+
+.chat-input{
+
+flex-direction:column;
+
+}
+
+.chat-input input{
+
+width:100%;
+
+}
+
+.chat-input .btn{
+
+width:100%;
+
+}
+
+.btn{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.sidebar{
+
+width:260px;
+
+box-shadow:0 0 30px rgba(0,0,0,.4);
 
 }
 
 }
 
-@media(min-width:769px){
+/* Tablets */
+
+@media (min-width:769px) and (max-width:1024px){
+
+main{
+
+padding:24px;
+
+}
+
+.cards{
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+}
+
+.stats{
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+}
+
+}
+
+/* Desktop */
+
+@media (min-width:1025px){
+
+.cards{
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(260px,1fr));
+
+}
+
+.stats{
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+}
+
+}
+
+/* Safe Area */
+
+body{
+
+padding-left:env(safe-area-inset-left);
+
+padding-right:env(safe-area-inset-right);
+
+padding-bottom:env(safe-area-inset-bottom);
+
+}
+
+/* Landscape */
+
+@media (orientation:landscape) and (max-height:500px){
+
+.hero{
+
+padding:18px;
+
+}
+
+.chat-window{
+
+height:40vh;
+
+}
 
 .bottom-nav{
 
-display:none;
+height:58px;
+
+}
+
+}
+
+/* Large Phones */
+
+@media (min-width:390px){
+
+.hero h1{
+
+font-size:30px;
+
+}
+
+}
+
+/* Small Phones */
+
+@media (max-width:360px){
+
+.hero{
+
+padding:18px;
+
+}
+
+.hero h1{
+
+font-size:24px;
+
+}
+
+.card{
+
+padding:14px;
+
+}
+
+.btn{
+
+padding:12px 18px;
+
+font-size:14px;
+
+}
+
+}
+
+/* Touch Devices */
+
+@media (hover:none){
+
+.btn:hover,
+
+.card:hover,
+
+.icon-btn:hover,
+
+.fab:hover{
+
+transform:none;
+
+box-shadow:none;
+
+}
+
+}
+
+/* Reduce Motion */
+
+@media (prefers-reduced-motion:reduce){
+
+*{
+
+animation:none!important;
+
+transition:none!important;
+
+scroll-behavior:auto!important;
 
 }
 
