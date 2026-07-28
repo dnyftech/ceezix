@@ -1,7 +1,301 @@
 <section class="page fade">
 
-<h2>Coming Soon</h2>
+<div class="hero">
 
-<p>This section is under development.</p>
+<h1>⚙ Settings</h1>
+
+<p>
+
+Configure and personalize your CEEZIX workspace.
+
+</p>
+
+</div>
+
+<h2 class="section-title">
+
+Appearance
+
+</h2>
+
+<div class="card">
+
+<label>
+
+Theme
+
+</label>
+
+<select
+id="themeSelect"
+class="input">
+
+<option value="dark">🌙 Dark</option>
+
+<option value="light">☀ Light</option>
+
+<option value="amoled">⚫ AMOLED</option>
+
+<option value="emerald">🟢 Emerald</option>
+
+<option value="purple">🟣 Purple</option>
+
+<option value="ocean">🔵 Ocean</option>
+
+</select>
+
+<button
+id="applyTheme"
+class="btn mt-2">
+
+Apply Theme
+
+</button>
+
+</div>
+
+<h2 class="section-title">
+
+Application
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Storage</h3>
+
+<p>
+
+Manage locally stored data.
+
+</p>
+
+<button
+id="clearStorage"
+class="btn btn-outline">
+
+Clear Storage
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Reset</h3>
+
+<p>
+
+Restore default settings.
+
+</p>
+
+<button
+id="resetApp"
+class="btn btn-secondary">
+
+Reset App
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>PWA</h3>
+
+<p>
+
+Application is installable.
+
+</p>
+
+<button
+id="checkSW"
+class="btn">
+
+Service Worker
+
+</button>
+
+</div>
+
+</div>
+
+<h2 class="section-title">
+
+Developer
+
+</h2>
+
+<div class="card">
+
+<table class="table">
+
+<tr>
+
+<th>Application</th>
+
+<td>CEEZIX</td>
+
+</tr>
+
+<tr>
+
+<th>Version</th>
+
+<td>1.0.0</td>
+
+</tr>
+
+<tr>
+
+<th>Platform</th>
+
+<td>GitHub Pages</td>
+
+</tr>
+
+<tr>
+
+<th>Framework</th>
+
+<td>HTML • CSS • JavaScript</td>
+
+</tr>
+
+<tr>
+
+<th>Offline</th>
+
+<td id="swStatus">
+
+Checking...
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<h2 class="section-title">
+
+System Information
+
+</h2>
+
+<div class="card">
+
+<p id="deviceInfo">
+
+Loading...
+
+</p>
+
+</div>
 
 </section>
+
+<script>
+
+const themeSelect=document.getElementById("themeSelect");
+
+const savedTheme=localStorage.getItem("ceezix.theme")||"dark";
+
+themeSelect.value=savedTheme;
+
+document.getElementById("applyTheme").onclick=()=>{
+
+const theme=themeSelect.value;
+
+document.body.dataset.theme=theme;
+
+localStorage.setItem("ceezix.theme",theme);
+
+if(window.Theme){
+
+Theme.set(theme);
+
+}
+
+if(window.Utils){
+
+Utils.toast("Theme updated");
+
+}
+
+};
+
+document.getElementById("clearStorage").onclick=()=>{
+
+if(confirm("Clear all local storage?")){
+
+localStorage.clear();
+
+sessionStorage.clear();
+
+Utils.toast("Storage cleared");
+
+}
+
+};
+
+document.getElementById("resetApp").onclick=()=>{
+
+if(confirm("Reset application?")){
+
+localStorage.clear();
+
+location.reload();
+
+}
+
+};
+
+document.getElementById("checkSW").onclick=()=>{
+
+if("serviceWorker" in navigator){
+
+Utils.toast("Service Worker Supported");
+
+}else{
+
+Utils.toast("Not Supported");
+
+}
+
+};
+
+const status=document.getElementById("swStatus");
+
+status.textContent=
+
+("serviceWorker" in navigator)
+
+?"Supported"
+
+:"Unavailable";
+
+const info=document.getElementById("deviceInfo");
+
+info.innerHTML=`
+
+<strong>User Agent</strong><br>
+
+${navigator.userAgent}<br><br>
+
+<strong>Language</strong><br>
+
+${navigator.language}<br><br>
+
+<strong>Screen</strong><br>
+
+${window.innerWidth} × ${window.innerHeight}
+
+`;
+
+</script>

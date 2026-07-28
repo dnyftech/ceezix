@@ -1,7 +1,308 @@
 <section class="page fade">
 
-<h2>Coming Soon</h2>
+<div class="hero">
 
-<p>This section is under development.</p>
+<h1>🧠 AI Models</h1>
+
+<p>
+
+Manage local and cloud AI models.
+
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="card stat">
+
+<h3>Installed</h3>
+
+<h2 id="installedModels">
+
+4
+
+</h2>
+
+</div>
+
+<div class="card stat">
+
+<h3>Active</h3>
+
+<h2 id="activeModel">
+
+Gemma3
+
+</h2>
+
+</div>
+
+<div class="card stat">
+
+<h3>Memory</h3>
+
+<h2>
+
+1.8 GB
+
+</h2>
+
+</div>
+
+</div>
+
+<h2 class="section-title">
+
+Installed Models
+
+</h2>
+
+<div class="cards" id="modelGrid">
+
+<div class="card model-card">
+
+<h3>🟢 Gemma3</h3>
+
+<p>
+
+General assistant
+
+</p>
+
+<span class="badge">
+
+Active
+
+</span>
+
+<div style="margin-top:16px">
+
+<button
+class="btn switchModel"
+data-model="Gemma3">
+
+Use
+
+</button>
+
+</div>
+
+</div>
+
+<div class="card model-card">
+
+<h3>🔵 Qwen2.5-Coder</h3>
+
+<p>
+
+Coding specialist
+
+</p>
+
+<div style="margin-top:16px">
+
+<button
+class="btn switchModel"
+data-model="Qwen2.5-Coder">
+
+Switch
+
+</button>
+
+</div>
+
+</div>
+
+<div class="card model-card">
+
+<h3>🟣 DeepSeek-R1</h3>
+
+<p>
+
+Reasoning model
+
+</p>
+
+<div style="margin-top:16px">
+
+<button
+class="btn switchModel"
+data-model="DeepSeek-R1">
+
+Switch
+
+</button>
+
+</div>
+
+</div>
+
+<div class="card model-card">
+
+<h3>🟠 SmolLM</h3>
+
+<p>
+
+Lightweight mobile model
+
+</p>
+
+<div style="margin-top:16px">
+
+<button
+class="btn switchModel"
+data-model="SmolLM">
+
+Switch
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<h2 class="section-title">
+
+Download Queue
+
+</h2>
+
+<div class="card">
+
+<p>
+
+No downloads in progress.
+
+</p>
+
+<div class="progress mt-2">
+
+<span style="width:0%"></span>
+
+</div>
+
+</div>
+
+<h2 class="section-title">
+
+Model Information
+
+</h2>
+
+<div class="card">
+
+<table class="table">
+
+<tr>
+
+<th>Name</th>
+
+<td id="currentModel">
+
+Gemma3
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>Status</th>
+
+<td>
+
+Ready
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>Provider</th>
+
+<td>
+
+Local
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>Acceleration</th>
+
+<td>
+
+CPU
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
 
 </section>
+
+<script>
+
+const modelLabel=document.getElementById("currentModel");
+const activeLabel=document.getElementById("activeModel");
+
+document
+.querySelectorAll(".switchModel")
+.forEach(button=>{
+
+button.onclick=()=>{
+
+const model=button.dataset.model;
+
+activeLabel.textContent=model;
+
+modelLabel.textContent=model;
+
+localStorage.setItem(
+
+"ceezix.activeModel",
+
+model
+
+);
+
+if(window.Utils){
+
+Utils.toast(
+
+model+" activated"
+
+);
+
+}
+
+};
+
+});
+
+const saved=
+
+localStorage.getItem(
+
+"ceezix.activeModel"
+
+);
+
+if(saved){
+
+activeLabel.textContent=saved;
+
+modelLabel.textContent=saved;
+
+}
+
+</script>

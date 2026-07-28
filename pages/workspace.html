@@ -1,7 +1,240 @@
 <section class="page fade">
 
-<h2>Coming Soon</h2>
+<div class="hero">
 
-<p>This section is under development.</p>
+<h1>💻 Workspace</h1>
+
+<p>
+Develop, edit and manage your projects.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Current Project</h3>
+
+<p id="projectName">
+
+CEEZIX
+
+</p>
+
+<div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+
+<button
+id="newProjectBtn"
+class="btn">
+
+New
+
+</button>
+
+<button
+id="saveProjectBtn"
+class="btn btn-outline">
+
+Save
+
+</button>
+
+<button
+id="runProjectBtn"
+class="btn btn-secondary">
+
+Run
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<h2 class="section-title">
+
+Explorer
+
+</h2>
+
+<div class="card">
+
+<ul id="fileExplorer" style="list-style:none;padding:0;">
+
+<li class="file-item">📄 index.html</li>
+
+<li class="file-item">🎨 css/style.css</li>
+
+<li class="file-item">🎨 css/layout.css</li>
+
+<li class="file-item">🎨 css/components.css</li>
+
+<li class="file-item">⚡ js/app.js</li>
+
+<li class="file-item">⚡ js/router.js</li>
+
+<li class="file-item">📁 assets/</li>
+
+<li class="file-item">📁 pages/</li>
+
+</ul>
+
+</div>
+
+<h2 class="section-title">
+
+Editor
+
+</h2>
+
+<div class="card">
+
+<textarea
+id="editor"
+class="input"
+style="height:320px;font-family:monospace;resize:vertical;">
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CEEZIX</title>
+</head>
+<body>
+
+Hello World
+
+</body>
+</html>
+
+</textarea>
+
+</div>
+
+<h2 class="section-title">
+
+Console
+
+</h2>
+
+<div class="card">
+
+<pre
+id="consoleOutput"
+style="white-space:pre-wrap;min-height:120px;">
+
+Workspace Ready...
+
+</pre>
+
+</div>
 
 </section>
+
+<script>
+
+const output=document.getElementById("consoleOutput");
+
+const editor=document.getElementById("editor");
+
+function log(text){
+
+output.textContent+=
+
+"\n"+text;
+
+output.scrollTop=
+
+output.scrollHeight;
+
+}
+
+document
+
+.getElementById("newProjectBtn")
+
+.onclick=()=>{
+
+editor.value="";
+
+log("New project created.");
+
+if(window.Utils){
+
+Utils.toast("New Project");
+
+}
+
+};
+
+document
+
+.getElementById("saveProjectBtn")
+
+.onclick=()=>{
+
+localStorage.setItem(
+
+"workspace.code",
+
+editor.value
+
+);
+
+log("Project saved.");
+
+if(window.Utils){
+
+Utils.toast("Saved");
+
+}
+
+};
+
+document
+
+.getElementById("runProjectBtn")
+
+.onclick=()=>{
+
+log("Running preview...");
+
+setTimeout(()=>{
+
+log("Execution completed successfully.");
+
+},800);
+
+};
+
+const saved=
+
+localStorage.getItem("workspace.code");
+
+if(saved){
+
+editor.value=saved;
+
+log("Previous project restored.");
+
+}
+
+document
+
+.querySelectorAll(".file-item")
+
+.forEach(item=>{
+
+item.style.cursor="pointer";
+
+item.onclick=()=>{
+
+log("Opened "+item.textContent);
+
+};
+
+});
+
+</script>

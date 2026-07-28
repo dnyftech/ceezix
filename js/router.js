@@ -1,22 +1,38 @@
+/* ==========================================
+   CEEZIX Router
+========================================== */
+
 const Router={
 
-content:null,
+current:"dashboard",
+
+container:null,
 
 async init(){
 
-this.content=document.getElementById("content");
+this.container=document.getElementById("content");
 
-this.open("dashboard");
+await this.open("dashboard");
+
+this.bind();
+
+},
+
+bind(){
 
 document
 
 .querySelectorAll("[data-page]")
 
-.forEach(item=>{
+.forEach(button=>{
 
-item.onclick=()=>{
+button.onclick=()=>{
 
-this.open(item.dataset.page);
+this.open(
+
+button.dataset.page
+
+);
 
 };
 
@@ -28,13 +44,23 @@ async open(page){
 
 try{
 
+this.current=page;
+
+const response=
+
+await fetch(
+
+`pages/${page}.html`
+
+);
+
 const html=
 
-await fetch(`pages/${page}.html`);
+await response.text();
 
-this.content.innerHTML=
+this.container.innerHTML=html;
 
-await html.text();
+this.highlight(page);
 
 if(window.UI){
 
@@ -42,16 +68,60 @@ UI.pageLoaded(page);
 
 }
 
+history.replaceState(
+
+{page},
+
+"",
+
+"#"+page
+
+);
+
 }catch(e){
 
-this.content.innerHTML=`
+console.error(e);
 
-<h2>Page not found</h2>
+this.container.innerHTML=`
+
+<div class="card">
+
+<h2>404</h2>
+
+<p>
+
+Unable to load page.
+
+</p>
+
+</div>
 
 `;
 
 }
 
+},
+
+highlight(page){
+
+document
+
+.querySelectorAll("[data-page]")
+
+.forEach(item=>{
+
+item.classList.remove("active");
+
+if(item.dataset.page===page){
+
+item.classList.add("active");
+
+}
+
+});
+
 }
 
 };
+
+window.Router=Router;

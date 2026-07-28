@@ -1,10 +1,29 @@
 <section class="page fade">
 
-<div class="chat-window" id="chatWindow">
+<div class="hero">
+
+<h1>🤖 CEEZIX AI</h1>
+
+<p>
+Your intelligent coding assistant.
+</p>
+
+</div>
+
+<div class="card">
+
+<div
+id="chatWindow"
+class="chat-window">
 
 <div class="message ai">
-Hello 👋
-How can I help today?
+
+👋 Welcome to CEEZIX AI.
+
+Ask me about coding, HTML, CSS,
+JavaScript, GitHub Pages, Cloudflare,
+or your projects.
+
 </div>
 
 </div>
@@ -13,10 +32,13 @@ How can I help today?
 
 <input
 id="prompt"
-placeholder="Ask CEEZIX..." />
+class="input"
+type="text"
+placeholder="Ask CEEZIX AI anything...">
 
-<button id="sendBtn"
-class="btn btn-primary">
+<button
+id="sendBtn"
+class="btn">
 
 Send
 
@@ -24,4 +46,226 @@ Send
 
 </div>
 
+</div>
+
+<h2 class="section-title">
+
+Suggested Prompts
+
+</h2>
+
+<div class="cards">
+
+<div class="card prompt-card">
+
+<p>
+
+Build a responsive dashboard
+
+</p>
+
+</div>
+
+<div class="card prompt-card">
+
+<p>
+
+Create a login page
+
+</p>
+
+</div>
+
+<div class="card prompt-card">
+
+<p>
+
+Generate a GitHub Actions workflow
+
+</p>
+
+</div>
+
+<div class="card prompt-card">
+
+<p>
+
+Explain JavaScript async/await
+
+</p>
+
+</div>
+
+<div class="card prompt-card">
+
+<p>
+
+Optimize my website
+
+</p>
+
+</div>
+
+<div class="card prompt-card">
+
+<p>
+
+Create a PWA manifest
+
+</p>
+
+</div>
+
+</div>
+
+<div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+
+<button
+id="clearChat"
+class="btn btn-outline">
+
+Clear Chat
+
+</button>
+
+<button
+id="typingDemo"
+class="btn btn-secondary">
+
+Typing Demo
+
+</button>
+
+</div>
+
 </section>
+
+<script>
+
+const chatWindow=document.getElementById("chatWindow");
+
+const prompt=document.getElementById("prompt");
+
+const sendBtn=document.getElementById("sendBtn");
+
+function addMessage(text,type){
+
+const div=document.createElement("div");
+
+div.className="message "+type;
+
+div.textContent=text;
+
+chatWindow.appendChild(div);
+
+chatWindow.scrollTop=chatWindow.scrollHeight;
+
+}
+
+function reply(text){
+
+const typing=document.createElement("div");
+
+typing.className="typing";
+
+typing.innerHTML="<span></span><span></span><span></span>";
+
+chatWindow.appendChild(typing);
+
+chatWindow.scrollTop=chatWindow.scrollHeight;
+
+setTimeout(()=>{
+
+typing.remove();
+
+addMessage(
+
+"CEEZIX AI: "+text,
+
+"ai"
+
+);
+
+},900);
+
+}
+
+sendBtn.onclick=()=>{
+
+const text=prompt.value.trim();
+
+if(!text) return;
+
+addMessage(text,"user");
+
+prompt.value="";
+
+reply(
+
+"I received your request. Local AI integration will be connected in a later module."
+
+);
+
+};
+
+prompt.addEventListener("keydown",e=>{
+
+if(e.key==="Enter"){
+
+sendBtn.click();
+
+}
+
+});
+
+document
+
+.querySelectorAll(".prompt-card")
+
+.forEach(card=>{
+
+card.onclick=()=>{
+
+prompt.value=
+
+card.innerText.trim();
+
+prompt.focus();
+
+};
+
+});
+
+document
+
+.getElementById("clearChat")
+
+.onclick=()=>{
+
+chatWindow.innerHTML='
+
+<div class="message ai">
+
+Chat cleared.
+
+Start a new conversation.
+
+</div>';
+
+};
+
+document
+
+.getElementById("typingDemo")
+
+.onclick=()=>{
+
+reply(
+
+"This is a typing animation demonstration."
+
+);
+
+};
+
+</script>

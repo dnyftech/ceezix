@@ -1,3 +1,7 @@
+/* ==========================================
+   CEEZIX UI
+========================================== */
+
 const UI={
 
 init(){
@@ -6,11 +10,67 @@ this.sidebar();
 
 this.theme();
 
+this.fab();
+
+this.network();
+
 },
 
-const fab=document.getElementById("fab");
+pageLoaded(page){
 
-if(fab){
+console.log(
+
+"Loaded:",
+
+page
+
+);
+
+this.bindCards();
+
+this.chat();
+
+},
+
+sidebar(){
+
+const menu=$("#menuBtn");
+
+const sidebar=$("#sidebar");
+
+if(!menu||!sidebar)return;
+
+menu.onclick=()=>{
+
+sidebar.classList.toggle(
+
+"active"
+
+);
+
+};
+
+},
+
+theme(){
+
+const btn=$("#themeBtn");
+
+if(!btn)return;
+
+btn.onclick=()=>{
+
+Theme.toggle();
+
+};
+
+},
+
+fab(){
+
+const fab=$("#fab");
+
+if(!fab)return;
 
 fab.onclick=()=>{
 
@@ -18,91 +78,39 @@ Router.open("chat");
 
 };
 
-}
-
-pageLoaded(page){
-
-console.log(page);
-
-if(page==="chat"){
-
-this.chat();
-
-}
-
 },
 
-document
+bindCards(){
 
-.querySelectorAll(".card[data-page]")
+$$("[data-page]")
 
 .forEach(card=>{
 
 card.onclick=()=>{
 
-Router.open(card.dataset.page);
+Router.open(
 
+card.dataset.page
 
+);
 
 };
 
 });
-
-document
-
-.querySelectorAll("[data-page]")
-
-.forEach(item=>{
-
-item.classList.remove("active");
-
-if(item.dataset.page===page){
-
-item.classList.add("active");
-
-}
-
-});
-
-sidebar(){
-
-const menu=document.getElementById("menuBtn");
-
-const sidebar=document.getElementById("sidebar");
-
-if(menu){
-
-menu.onclick=()=>{
-
-sidebar.classList.toggle("active");
-
-};
-
-}
-
-},
-
-theme(){
-
-const btn=document.getElementById("themeBtn");
-
-if(btn){
-
-btn.onclick=()=>Theme.toggle();
-
-}
 
 },
 
 chat(){
 
-const input=document.getElementById("prompt");
+const input=$("#prompt");
 
-const send=document.getElementById("sendBtn");
+const send=$("#sendBtn");
 
-const chat=document.getElementById("chatWindow");
+const chat=$("#chatWindow");
 
-if(!send)return;
+if(!input||!send||!chat)
+
+return;
 
 send.onclick=()=>{
 
@@ -122,7 +130,9 @@ ${text}
 
 input.value="";
 
-chat.scrollTop=chat.scrollHeight;
+chat.scrollTop=
+
+chat.scrollHeight;
 
 setTimeout(()=>{
 
@@ -130,18 +140,52 @@ chat.innerHTML+=`
 
 <div class="message ai">
 
-Thinking...
+Hello 👋
+
+I'm CEEZIX AI.
 
 </div>
 
 `;
 
-chat.scrollTop=chat.scrollHeight;
+chat.scrollTop=
 
-},500);
+chat.scrollHeight;
+
+},700);
 
 };
+
+},
+
+network(){
+
+window.addEventListener(
+
+"online",
+
+()=>Utils.toast(
+
+"Back Online"
+
+)
+
+);
+
+window.addEventListener(
+
+"offline",
+
+()=>Utils.toast(
+
+"Offline"
+
+)
+
+);
 
 }
 
 };
+
+window.UI=UI;

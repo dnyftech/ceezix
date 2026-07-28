@@ -1,30 +1,101 @@
-/*
-========================================
- CEEZIX
-========================================
-*/
+/* ==========================================
+   CEEZIX Application
+========================================== */
 
-window.addEventListener("DOMContentLoaded", () => {
+const App={
 
-    Theme.init();
+version:"1.0.0",
 
-    Router.init();
+async start(){
 
-    UI.init();
+console.log(
 
-    Utils.toast("Welcome to CEEZIX");
+"Starting CEEZIX..."
 
-    if ("serviceWorker" in navigator) {
+);
 
-        navigator.serviceWorker
-            .register("./service-worker.js")
-            .then(() => {
+Theme.init();
 
-                console.log("Service Worker Ready");
+await Router.init();
 
-            })
-            .catch(console.error);
+UI.init();
 
-    }
+this.serviceWorker();
+
+this.events();
+
+Utils.toast(
+
+"Welcome to CEEZIX"
+
+);
+
+},
+
+serviceWorker(){
+
+if(
+
+"serviceWorker"
+
+in navigator
+
+){
+
+navigator.serviceWorker
+
+.register(
+
+"./service-worker.js"
+
+)
+
+.then(()=>{
+
+console.log(
+
+"SW Ready"
+
+);
+
+})
+
+.catch(console.error);
+
+}
+
+},
+
+events(){
+
+window.addEventListener(
+
+"resize",
+
+()=>{
+
+console.log(
+
+window.innerWidth,
+
+window.innerHeight
+
+);
+
+}
+
+);
+
+}
+
+};
+
+window.addEventListener(
+
+"DOMContentLoaded",
+
+()=>{
+
+App.start();
 
 });
