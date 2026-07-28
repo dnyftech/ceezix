@@ -513,3 +513,18 @@ opacity:1;
 animation:fade .3s ease;
 
 }
+
+#content{
+
+animation:fade .25s;
+
+min-height:70vh;
+
+}
+
+.page{
+
+animation:slideUp .25s;
+
+}
+

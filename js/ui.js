@@ -189,3 +189,30 @@ window.addEventListener(
 };
 
 window.UI=UI;
+
+document
+
+.addEventListener(
+
+"click",
+
+e=>{
+
+const page=
+
+e.target.closest("[data-page]");
+
+if(!page)return;
+
+e.preventDefault();
+
+Router.open(
+
+page.dataset.page
+
+);
+
+}
+
+);
+

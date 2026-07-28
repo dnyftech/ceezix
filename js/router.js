@@ -1,10 +1,12 @@
 /* ==========================================
-   CEEZIX Router
+   CEEZIX Router v2
 ========================================== */
 
 const Router={
 
-current:"dashboard",
+cache:{},
+
+current:null,
 
 container:null,
 
@@ -12,31 +14,59 @@ async init(){
 
 this.container=document.getElementById("content");
 
-await this.open("dashboard");
+window.addEventListener(
 
-this.bind();
+"hashchange",
 
-},
+()=>{
 
-bind(){
+const page=
 
-document
+location.hash.replace("#","")
 
-.querySelectorAll("[data-page]")
+||"dashboard";
 
-.forEach(button=>{
+this.open(page);
 
-button.onclick=()=>{
-
-this.open(
-
-button.dataset.page
+}
 
 );
 
-};
+const start=
 
-});
+location.hash.replace("#","")
+
+||"dashboard";
+
+await this.open(start);
+
+},
+
+async fetch(page){
+
+if(this.cache[page]){
+
+return this.cache[page];
+
+}
+
+const response=
+
+await fetch(`pages/${page}.html`);
+
+if(!response.ok){
+
+throw new Error(page);
+
+}
+
+const html=
+
+await response.text();
+
+this.cache[page]=html;
+
+return html;
 
 },
 
@@ -44,21 +74,15 @@ async open(page){
 
 try{
 
-this.current=page;
-
-const response=
-
-await fetch(
-
-`pages/${page}.html`
-
-);
-
 const html=
 
-await response.text();
+await this.fetch(page);
+
+this.container.classList.add("fade");
 
 this.container.innerHTML=html;
+
+this.current=page;
 
 this.highlight(page);
 
@@ -70,7 +94,7 @@ UI.pageLoaded(page);
 
 history.replaceState(
 
-{page},
+{},
 
 "",
 
@@ -78,9 +102,9 @@ history.replaceState(
 
 );
 
-}catch(e){
+}catch(error){
 
-console.error(e);
+console.error(error);
 
 this.container.innerHTML=`
 
@@ -90,7 +114,7 @@ this.container.innerHTML=`
 
 <p>
 
-Unable to load page.
+Page not found.
 
 </p>
 
