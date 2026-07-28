@@ -1,0 +1,338 @@
+/* ==========================================
+   CEEZIX Button System v2
+========================================== */
+
+.btn{
+    --btn-bg: var(--primary);
+    --btn-color:#fff;
+
+    position:relative;
+    overflow:hidden;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    min-width:48px;
+    min-height:48px;
+
+    padding:14px 22px;
+
+    border:none;
+    outline:none;
+
+    border-radius:16px;
+
+    background:var(--btn-bg);
+    color:var(--btn-color);
+
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.3px;
+    font-family:inherit;
+
+    cursor:pointer;
+    user-select:none;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
+}
+
+/* Ripple */
+
+.btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:scale(0);
+
+    opacity:0;
+
+    transition:.45s;
+
+}
+
+.btn:active::after{
+
+    transform:scale(18);
+
+    opacity:1;
+
+    transition:0s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn:active{
+
+    transform:scale(.97);
+
+}
+
+.btn:disabled{
+
+    opacity:.45;
+
+    pointer-events:none;
+
+}
+
+/* Primary */
+
+.btn-primary{
+
+    --btn-bg:linear-gradient(135deg,#2563eb,#3b82f6);
+
+    box-shadow:
+        0 10px 24px rgba(37,99,235,.35);
+
+}
+
+/* Secondary */
+
+.btn-secondary{
+
+    --btn-bg:#1f2937;
+
+    border:1px solid #334155;
+
+}
+
+/* Glass */
+
+.btn-glass{
+
+    backdrop-filter:blur(16px);
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+/* Outline */
+
+.btn-outline{
+
+    background:transparent;
+
+    color:var(--primary);
+
+    border:2px solid var(--primary);
+
+}
+
+.btn-outline:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* Success */
+
+.btn-success{
+
+    --btn-bg:linear-gradient(135deg,#16a34a,#22c55e);
+
+}
+
+/* Warning */
+
+.btn-warning{
+
+    --btn-bg:linear-gradient(135deg,#f59e0b,#fbbf24);
+
+    color:#111827;
+
+}
+
+/* Danger */
+
+.btn-danger{
+
+    --btn-bg:linear-gradient(135deg,#dc2626,#ef4444);
+
+}
+
+/* Ghost */
+
+.btn-ghost{
+
+    background:transparent;
+
+    color:var(--text);
+
+}
+
+.btn-ghost:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/* Circular */
+
+.btn-circle{
+
+    width:52px;
+
+    height:52px;
+
+    padding:0;
+
+    border-radius:50%;
+
+}
+
+/* Pill */
+
+.btn-pill{
+
+    border-radius:999px;
+
+}
+
+/* Small */
+
+.btn-sm{
+
+    min-height:38px;
+
+    padding:10px 16px;
+
+    font-size:13px;
+
+}
+
+/* Large */
+
+.btn-lg{
+
+    min-height:56px;
+
+    padding:16px 28px;
+
+    font-size:17px;
+
+}
+
+/* Full Width */
+
+.btn-block{
+
+    display:flex;
+
+    width:100%;
+
+}
+
+/* Floating Action Button */
+
+.fab{
+
+    position:fixed;
+
+    right:18px;
+
+    bottom:88px;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
+
+    color:#fff;
+
+    font-size:26px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.35);
+
+    transition:.25s;
+
+    z-index:1000;
+
+}
+
+.fab:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.fab:active{
+
+    transform:scale(.94);
+
+}
+
+/* Loading */
+
+.btn.loading{
+
+    pointer-events:none;
+
+}
+
+.btn.loading::before{
+
+    content:"";
+
+    width:18px;
+
+    height:18px;
+
+    border:2px solid rgba(255,255,255,.35);
+
+    border-top-color:#fff;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}

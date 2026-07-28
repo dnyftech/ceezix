@@ -1,0 +1,316 @@
+/* =====================================================
+   CEEZIX Layout System
+   Mobile First
+===================================================== */
+
+.container{
+    width:min(100%,1400px);
+    margin:0 auto;
+    padding:16px;
+}
+
+main{
+    width:100%;
+}
+
+/* Dashboard Grid */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:16px;
+
+}
+
+/* Two Column Layout */
+
+.two-column{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:16px;
+
+}
+
+/* Three Column Layout */
+
+.three-column{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:16px;
+
+}
+
+/* Workspace */
+
+.workspace{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:16px;
+
+}
+
+/* Sidebar Layout */
+
+.layout{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+.layout main{
+
+    flex:1;
+
+}
+
+/* Content */
+
+.section{
+
+    margin-bottom:24px;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:16px;
+
+}
+
+.section-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+/* Grid Utilities */
+
+.grid{
+
+    display:grid;
+
+    gap:16px;
+
+}
+
+.grid-2{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.grid-3{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.grid-4{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+/* Flex Utilities */
+
+.flex{
+
+    display:flex;
+
+}
+
+.flex-column{
+
+    flex-direction:column;
+
+}
+
+.flex-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.gap-8{
+
+    gap:8px;
+
+}
+
+.gap-12{
+
+    gap:12px;
+
+}
+
+.gap-16{
+
+    gap:16px;
+
+}
+
+.gap-24{
+
+    gap:24px;
+
+}
+
+/* Width Helpers */
+
+.w-100{
+
+    width:100%;
+
+}
+
+.h-100{
+
+    height:100%;
+
+}
+
+/* Tablet */
+
+@media (min-width:768px){
+
+.cards{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.two-column{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.three-column{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+.workspace{
+
+grid-template-columns:300px 1fr;
+
+}
+
+}
+
+/* Desktop */
+
+@media (min-width:1024px){
+
+#content{
+
+margin-left:270px;
+
+padding:90px 24px 24px;
+
+}
+
+.sidebar{
+
+left:0;
+
+}
+
+#menuBtn{
+
+display:none;
+
+}
+
+.cards{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+.grid-4{
+
+grid-template-columns:repeat(4,1fr);
+
+}
+
+}
+
+/* Large Desktop */
+
+@media (min-width:1440px){
+
+.cards{
+
+grid-template-columns:repeat(4,1fr);
+
+}
+
+.container{
+
+padding:24px;
+
+}
+
+}
+
+/* Landscape Phones */
+
+@media (orientation:landscape) and (max-height:500px){
+
+.topbar{
+
+height:56px;
+
+}
+
+.bottom-nav{
+
+height:60px;
+
+}
+
+.hero{
+
+padding:20px;
+
+}
+
+}
