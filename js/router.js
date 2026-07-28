@@ -1,45 +1,57 @@
-/*
-========================================
- Router
-========================================
-*/
+const Router={
 
-const Router = {
+content:null,
 
-    current: "dashboard",
+async init(){
 
-    init() {
+this.content=document.getElementById("content");
 
-        this.bind();
+this.open("dashboard");
 
-    },
+document
 
-    bind() {
+.querySelectorAll("[data-page]")
 
-        document
-            .querySelectorAll("[data-page]")
-            .forEach(button => {
+.forEach(item=>{
 
-                button.onclick = () => {
+item.onclick=()=>{
 
-                    this.open(
-                        button.dataset.page
-                    );
+this.open(item.dataset.page);
 
-                };
+};
 
-            });
+});
 
-    },
+},
 
-    open(page) {
+async open(page){
 
-        this.current = page;
+try{
 
-        Utils.toast(page);
+const html=
 
-        console.log("Open:", page);
+await fetch(`pages/${page}.html`);
 
-    }
+this.content.innerHTML=
+
+await html.text();
+
+if(window.UI){
+
+UI.pageLoaded(page);
+
+}
+
+}catch(e){
+
+this.content.innerHTML=`
+
+<h2>Page not found</h2>
+
+`;
+
+}
+
+}
 
 };

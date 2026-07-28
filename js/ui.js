@@ -1,52 +1,103 @@
-/*
-========================================
- UI Manager
-========================================
-*/
+const UI={
 
-const UI = {
+init(){
 
-    init() {
+this.sidebar();
 
-        this.menu();
+this.theme();
 
-        this.theme();
+},
 
-    },
+pageLoaded(page){
 
-    menu() {
+console.log(page);
 
-        const menu =
-            document.getElementById("menuBtn");
+if(page==="chat"){
 
-        const sidebar =
-            document.getElementById("sidebar");
+this.chat();
 
-        if (!menu || !sidebar)
-            return;
+}
 
-        menu.onclick = () => {
+},
 
-            sidebar.classList.toggle("active");
+sidebar(){
 
-        };
+const menu=document.getElementById("menuBtn");
 
-    },
+const sidebar=document.getElementById("sidebar");
 
-    theme() {
+if(menu){
 
-        const button =
-            document.getElementById("themeBtn");
+menu.onclick=()=>{
 
-        if (!button)
-            return;
+sidebar.classList.toggle("active");
 
-        button.onclick = () => {
+};
 
-            Theme.toggle();
+}
 
-        };
+},
 
-    }
+theme(){
+
+const btn=document.getElementById("themeBtn");
+
+if(btn){
+
+btn.onclick=()=>Theme.toggle();
+
+}
+
+},
+
+chat(){
+
+const input=document.getElementById("prompt");
+
+const send=document.getElementById("sendBtn");
+
+const chat=document.getElementById("chatWindow");
+
+if(!send)return;
+
+send.onclick=()=>{
+
+const text=input.value.trim();
+
+if(!text)return;
+
+chat.innerHTML+=`
+
+<div class="message user">
+
+${text}
+
+</div>
+
+`;
+
+input.value="";
+
+chat.scrollTop=chat.scrollHeight;
+
+setTimeout(()=>{
+
+chat.innerHTML+=`
+
+<div class="message ai">
+
+Thinking...
+
+</div>
+
+`;
+
+chat.scrollTop=chat.scrollHeight;
+
+},500);
+
+};
+
+}
 
 };
