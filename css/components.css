@@ -500,3 +500,44 @@ height:55vh;
 }
 
 }
+
+.hero{
+
+animation:slideUp .35s ease;
+
+}
+
+.stat h2{
+
+transition:.3s;
+
+}
+
+.stat:hover h2{
+
+transform:scale(1.08);
+
+}
+
+#clock{
+
+font-size:32px;
+
+font-weight:700;
+
+}
+
+#activityList li{
+
+padding:10px 0;
+
+border-bottom:1px solid var(--border);
+
+}
+
+#activityList li:last-child{
+
+border:none;
+
+}
+

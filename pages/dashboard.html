@@ -2,28 +2,20 @@
 
 <div class="hero">
 
-<h1>CEEZIX</h1>
+<h1>🚀 CEEZIX</h1>
 
 <p>
-Build • Code • Deploy • AI
+Professional Mobile AI Development Workspace
 </p>
 
-<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;">
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;">
 
-<button
-class="btn btn-primary"
-data-page="chat">
-
-🤖 Launch AI
-
+<button class="btn" data-page="workspace">
+💻 Continue Coding
 </button>
 
-<button
-class="btn btn-outline"
-data-page="workspace">
-
-💻 Workspace
-
+<button class="btn btn-outline" data-page="chat">
+🤖 Open AI
 </button>
 
 </div>
@@ -33,106 +25,37 @@ data-page="workspace">
 <div class="stats">
 
 <div class="card stat">
-
 <h3>Projects</h3>
-
-<h2 id="projectCount">
-
-12
-
-</h2>
-
+<h2 id="statProjects">12</h2>
 </div>
 
 <div class="card stat">
-
-<h3>Models</h3>
-
-<h2>
-
-5
-
-</h2>
-
+<h3>Files</h3>
+<h2 id="statFiles">184</h2>
 </div>
 
 <div class="card stat">
-
-<h3>Status</h3>
-
-<h2 style="color:#22c55e;">
-
-Online
-
-</h2>
-
+<h3>AI Model</h3>
+<h2 id="statModel">Gemma3</h2>
 </div>
 
 </div>
-
-<h2 class="section-title">
-
-Quick Access
-
-</h2>
 
 <div class="cards">
 
-<div class="card ripple" data-page="chat">
+<div class="card">
 
-<h3>🤖 AI Assistant</h3>
+<h3>🕒 Current Time</h3>
 
-<p>
+<h2 id="clock">
 
-Start chatting with your AI assistant.
+--:--
 
-</p>
+</h2>
 
-</div>
+<p id="today">
 
-<div class="card ripple" data-page="workspace">
-
-<h3>💻 Workspace</h3>
-
-<p>
-
-Open coding workspace.
-
-</p>
-
-</div>
-
-<div class="card ripple" data-page="files">
-
-<h3>📁 Files</h3>
-
-<p>
-
-Browse project files.
-
-</p>
-
-</div>
-
-<div class="card ripple" data-page="models">
-
-<h3>🧠 AI Models</h3>
-
-<p>
-
-Manage installed models.
-
-</p>
-
-</div>
-
-<div class="card ripple" data-page="settings">
-
-<h3>⚙ Settings</h3>
-
-<p>
-
-Customize the application.
+Loading...
 
 </p>
 
@@ -140,21 +63,37 @@ Customize the application.
 
 <div class="card">
 
-<h3>🚀 Deployment</h3>
+<h3>🌐 Network</h3>
+
+<h2 id="networkState">
+
+Checking...
+
+</h2>
 
 <p>
 
-Deploy directly to GitHub Pages.
+GitHub Pages Ready
 
 </p>
 
-<button
-class="btn btn-primary"
-id="deployBtn">
+</div>
 
-Deploy
+<div class="card">
 
-</button>
+<h3>⚡ Performance</h3>
+
+<div class="progress">
+
+<span id="memoryBar" style="width:35%"></span>
+
+</div>
+
+<p id="memoryText">
+
+Initializing...
+
+</p>
 
 </div>
 
@@ -168,119 +107,65 @@ Recent Activity
 
 <div class="card">
 
-<table class="table">
+<ul id="activityList" style="list-style:none;padding:0;">
 
-<thead>
+<li>✅ Workspace initialized</li>
 
-<tr>
+<li>✅ Router loaded</li>
 
-<th>Activity</th>
+<li>✅ Theme loaded</li>
 
-<th>Time</th>
+<li>✅ Dashboard ready</li>
 
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>Project Created</td>
-
-<td>Today</td>
-
-</tr>
-
-<tr>
-
-<td>GitHub Sync</td>
-
-<td>5 min ago</td>
-
-</tr>
-
-<tr>
-
-<td>Theme Updated</td>
-
-<td>12 min ago</td>
-
-</tr>
-
-<tr>
-
-<td>Workspace Opened</td>
-
-<td>20 min ago</td>
-
-</tr>
-
-</tbody>
-
-</table>
+</ul>
 
 </div>
 
 <h2 class="section-title">
 
-System Overview
+Quick Launch
 
 </h2>
 
 <div class="cards">
 
-<div class="card">
+<div class="card" data-page="workspace">
 
-<h3>Storage</h3>
+<h3>💻 Workspace</h3>
 
-<div class="progress">
-
-<span style="width:42%"></span>
+<p>Open code editor</p>
 
 </div>
 
-<p class="mt-2">
+<div class="card" data-page="chat">
 
-420 MB of 1 GB used
+<h3>🤖 AI Chat</h3>
 
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Memory</h3>
-
-<div class="progress">
-
-<span style="width:65%"></span>
+<p>Ask CEEZIX AI</p>
 
 </div>
 
-<p class="mt-2">
+<div class="card" data-page="files">
 
-Runtime healthy
+<h3>📁 Files</h3>
 
-</p>
+<p>Browse project</p>
 
 </div>
 
-<div class="card">
+<div class="card" data-page="models">
 
-<h3>Network</h3>
+<h3>🧠 Models</h3>
 
-<span class="badge">
+<p>Manage AI models</p>
 
-Connected
+</div>
 
-</span>
+<div class="card" data-page="settings">
 
-<p class="mt-2">
+<h3>⚙ Settings</h3>
 
-GitHub Pages Ready
-
-</p>
+<p>Application preferences</p>
 
 </div>
 
@@ -290,20 +175,69 @@ GitHub Pages Ready
 
 <script>
 
-const deployBtn=document.getElementById("deployBtn");
+(function(){
 
-if(deployBtn){
+const clock=document.getElementById("clock");
 
-deployBtn.onclick=()=>{
+const today=document.getElementById("today");
 
-if(window.Utils){
+function updateClock(){
 
-Utils.toast("Deployment coming soon");
+const now=new Date();
+
+clock.textContent=
+
+now.toLocaleTimeString([],{
+
+hour:"2-digit",
+
+minute:"2-digit",
+
+second:"2-digit"
+
+});
+
+today.textContent=
+
+now.toDateString();
 
 }
 
-};
+updateClock();
+
+setInterval(updateClock,1000);
+
+const network=document.getElementById("networkState");
+
+function updateNetwork(){
+
+network.textContent=
+
+navigator.onLine
+
+?"🟢 Online"
+
+:"🔴 Offline";
 
 }
 
+updateNetwork();
+
+window.addEventListener("online",updateNetwork);
+
+window.addEventListener("offline",updateNetwork);
+
+const memoryBar=document.getElementById("memoryBar");
+
+const memoryText=document.getElementById("memoryText");
+
+let usage=42;
+
+memoryBar.style.width=usage+"%";
+
+memoryText.textContent=
+
+usage+"% Resources Used";
+
+})();
 </script>
