@@ -90,6 +90,22 @@ if(window.UI){
 
 UI.pageLoaded(page);
 
+switch(page){
+
+case "dashboard":
+
+Dashboard?.init();
+
+break;
+
+case "workspace":
+
+Workspace?.init();
+
+break;
+
+}
+
 }
 
 history.replaceState(
