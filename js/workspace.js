@@ -1015,3 +1015,40 @@ this.log("Workspace Pro Ready");
 
 };
 
+
+const originalOpenFile=Workspace.openFile.bind(Workspace);
+
+Workspace.openFile=function(name,content){
+
+originalOpenFile(name,content);
+
+if(window.Files){
+
+this.files[name]=Files.read(name);
+
+this.editor.value=this.files[name];
+
+}
+
+};
+
+const originalSaveWorkspace=Workspace.save.bind(Workspace);
+
+Workspace.save=function(){
+
+if(this.active&&window.Files){
+
+Files.write(
+
+this.active,
+
+this.editor.value
+
+);
+
+}
+
+originalSaveWorkspace();
+
+};
+

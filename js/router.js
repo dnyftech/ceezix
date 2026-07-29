@@ -100,6 +100,12 @@ break;
 
 case "workspace":
 
+case "files":
+
+Files?.init();
+
+break;
+
 case "chat":
 
 Chat?.init();
