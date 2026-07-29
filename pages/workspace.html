@@ -2,128 +2,215 @@
 
 <div class="hero">
 
-<h1>💻 Workspace</h1>
+<h1>💻 Workspace Pro</h1>
 
 <p>
-Develop, edit and manage your projects.
-</p>
 
-</div>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Current Project</h3>
-
-<p id="projectName">
-
-CEEZIX
+Professional Mobile Development Environment
 
 </p>
 
-<div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+</div>
+
+<div class="workspace">
+
+<aside class="explorer">
+
+<div class="explorer-header">
+
+<h3>
+
+📁 Explorer
+
+</h3>
 
 <button
-id="newProjectBtn"
-class="btn">
+id="newFileBtn"
+class="icon-btn">
 
-New
-
-</button>
-
-<button
-id="saveProjectBtn"
-class="btn btn-outline">
-
-Save
-
-</button>
-
-<button
-id="runProjectBtn"
-class="btn btn-secondary">
-
-Run
++
 
 </button>
 
 </div>
 
-</div>
+<ul id="projectTree">
 
-</div>
+<li class="folder open">
 
-<h2 class="section-title">
+<span>📁 Project</span>
 
-Explorer
+<ul>
 
-</h2>
+<li class="file active">
 
-<div class="card">
+📄 index.html
 
-<ul id="fileExplorer" style="list-style:none;padding:0;">
+</li>
 
-<li class="file-item">📄 index.html</li>
+<li class="folder">
 
-<li class="file-item">🎨 css/style.css</li>
+<span>📁 css</span>
 
-<li class="file-item">🎨 css/layout.css</li>
+<ul>
 
-<li class="file-item">🎨 css/components.css</li>
+<li class="file">
 
-<li class="file-item">⚡ js/app.js</li>
+🎨 style.css
 
-<li class="file-item">⚡ js/router.js</li>
+</li>
 
-<li class="file-item">📁 assets/</li>
+<li class="file">
 
-<li class="file-item">📁 pages/</li>
+🎨 layout.css
+
+</li>
+
+<li class="file">
+
+🎨 components.css
+
+</li>
 
 </ul>
 
+</li>
+
+<li class="folder">
+
+<span>📁 js</span>
+
+<ul>
+
+<li class="file">
+
+⚡ app.js
+
+</li>
+
+<li class="file">
+
+⚡ router.js
+
+</li>
+
+<li class="file">
+
+⚡ ui.js
+
+</li>
+
+</ul>
+
+</li>
+
+<li class="folder">
+
+<span>📁 pages</span>
+
+<ul>
+
+<li class="file">
+
+📄 dashboard.html
+
+</li>
+
+<li class="file">
+
+📄 chat.html
+
+</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+</aside>
+
+<section class="editor">
+
+<div class="editor-tabs">
+
+<button class="tab active">
+
+index.html
+
+</button>
+
 </div>
 
-<h2 class="section-title">
+<div class="editor-toolbar">
 
-Editor
+<button
+id="saveBtn"
+class="btn">
 
-</h2>
+💾 Save
 
-<div class="card">
+</button>
+
+<button
+id="runBtn"
+class="btn btn-outline">
+
+▶ Run
+
+</button>
+
+<button
+id="formatBtn"
+class="btn btn-secondary">
+
+✨ Format
+
+</button>
+
+</div>
 
 <textarea
-id="editor"
-class="input"
-style="height:320px;font-family:monospace;resize:vertical;">
+id="codeEditor"
+spellcheck="false">
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <title>CEEZIX</title>
+
 </head>
+
 <body>
 
-Hello World
+<h1>Hello CEEZIX</h1>
 
 </body>
+
 </html>
 
 </textarea>
 
+</section>
+
 </div>
 
-<h2 class="section-title">
+<div class="terminal">
 
-Console
+<div class="terminal-header">
 
-</h2>
+Terminal
 
-<div class="card">
+</div>
 
 <pre
-id="consoleOutput"
-style="white-space:pre-wrap;min-height:120px;">
+id="terminalOutput">
 
 Workspace Ready...
 
@@ -135,55 +222,65 @@ Workspace Ready...
 
 <script>
 
-const output=document.getElementById("consoleOutput");
+const editor=
 
-const editor=document.getElementById("editor");
+document.getElementById(
+
+"codeEditor"
+
+);
+
+const terminal=
+
+document.getElementById(
+
+"terminalOutput"
+
+);
 
 function log(text){
 
-output.textContent+=
+terminal.textContent+=
 
 "\n"+text;
 
-output.scrollTop=
+terminal.scrollTop=
 
-output.scrollHeight;
+terminal.scrollHeight;
+
+}
+
+const saved=
+
+localStorage.getItem(
+
+"workspace.editor"
+
+);
+
+if(saved){
+
+editor.value=saved;
+
+log("Previous session restored.");
 
 }
 
 document
 
-.getElementById("newProjectBtn")
-
-.onclick=()=>{
-
-editor.value="";
-
-log("New project created.");
-
-if(window.Utils){
-
-Utils.toast("New Project");
-
-}
-
-};
-
-document
-
-.getElementById("saveProjectBtn")
+.getElementById("saveBtn")
 
 .onclick=()=>{
 
 localStorage.setItem(
 
-"workspace.code",
+"workspace.editor",
 
 editor.value
 
 );
 
-log("Project saved.");
+log("Saved.");
 
 if(window.Utils){
 
@@ -195,43 +292,81 @@ Utils.toast("Saved");
 
 document
 
-.getElementById("runProjectBtn")
+.getElementById("runBtn")
 
 .onclick=()=>{
 
-log("Running preview...");
+log("Running...");
 
 setTimeout(()=>{
 
-log("Execution completed successfully.");
+log("Preview generated successfully.");
 
-},800);
+},700);
 
 };
 
-const saved=
+document
 
-localStorage.getItem("workspace.code");
+.getElementById("formatBtn")
 
-if(saved){
+.onclick=()=>{
 
-editor.value=saved;
+editor.value=
 
-log("Previous project restored.");
+editor.value
 
-}
+.replace(/\t/g,"    ")
+
+.trim();
+
+log("Formatted.");
+
+};
 
 document
 
-.querySelectorAll(".file-item")
+.querySelectorAll(".file")
+
+.forEach(file=>{
+
+file.onclick=()=>{
+
+document
+
+.querySelectorAll(".file")
 
 .forEach(item=>{
 
-item.style.cursor="pointer";
+item.classList.remove("active");
 
-item.onclick=()=>{
+});
 
-log("Opened "+item.textContent);
+file.classList.add("active");
+
+log(
+
+"Opened "+
+
+file.textContent.trim()
+
+);
+
+};
+
+});
+
+document
+
+.querySelectorAll(".folder>span")
+
+.forEach(folder=>{
+
+folder.onclick=()=>{
+
+folder.parentElement
+
+.classList.toggle("open");
 
 };
 

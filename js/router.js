@@ -100,6 +100,13 @@ break;
 
 case "workspace":
 
+case "chat":
+
+Chat?.init();
+
+break;
+
+
 Workspace?.init();
 
 break;
